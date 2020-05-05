@@ -43,7 +43,7 @@ module.exports = (env) =>{
     devServer:{
         contentBase:path.join(__dirname,'public'),
         historyApiFallback:true, //For all 404 pages, send back the index.html file
-        publicPath:'/dist/'
+        publicPath:'/dist/'  //folder for compiled assets to live
     }
     };
 };
