@@ -23,6 +23,9 @@ const expensesReducer = (state=expensesReducerDefaultState, action) =>{
                     return expense
                 }
             });
+        // Sets the state to the expenses array of objects that we get from the Firebase DB
+        case 'SET_EXPENSES':
+            return action.expenses;
         default:
             return state;
     }
