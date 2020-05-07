@@ -9,8 +9,6 @@ test('should return 0 if no expenses',()=>{
 });
 
 test('should correctly add up signle expense', ()=>{
-
-
     const result = getExpensesTotal([expenses[0]]);
     expect(result).toBe(195);
 });

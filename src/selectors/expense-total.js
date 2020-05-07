@@ -1,4 +1,3 @@
-
 export const getExpensesTotal = (expenses) =>{
     let total = 0;
 

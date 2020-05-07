@@ -19,4 +19,4 @@ const mapStateToProps = (state) =>{
     };
 }
 
-export default connect(mapStateToProps)(ExpenseSummary)
+export default connect(mapStateToProps)(ExpenseSummary);
