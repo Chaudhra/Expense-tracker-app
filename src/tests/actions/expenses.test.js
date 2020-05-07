@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { startAddExpense, addExpense, editExpense, removeExpense, setExpenses, startSetExpenses} from '../../actions/expenses';
+import { startAddExpense, addExpense, editExpense, removeExpense, setExpenses, startSetExpenses, startRemoveExpense} from '../../actions/expenses';
 import {expenses} from '../fixtures/expenses';
 import database from '../../firebase/firebase';
 
@@ -27,6 +27,25 @@ test('should setup remove expense action object', ()=>{
         type: 'REMOVE_EXPENSE',
         id: '123abc'
     });
+});
+
+test('should remove expense from firebase',(done)=>{
+    const store = createMockStore({});
+    const idOfRemovedExpense = expenses[0].id
+    store.dispatch(startRemoveExpense({id:idOfRemovedExpense})).then(()=>{
+        const action = store.getActions();
+        expect(action[0]).toEqual({
+            type:'REMOVE_EXPENSE',
+            id:idOfRemovedExpense
+        });
+        // Now we check to confirm if the exact expenase was removed from Firebase
+        return database.ref(`expenses/${idOfRemovedExpense}`).once('value');
+    }).then((snapshot)=>{
+        // If snapshot.val returns null, that expense no longer exists
+        expect(snapshot.val()).toBeFalsy();
+        done();
+    });
+   
 });
 
 test('should setup edit expense action object', ()=>{
@@ -150,3 +169,4 @@ test('should fetch the expens from firebase',(done)=>{
         done();
     });
 });
+

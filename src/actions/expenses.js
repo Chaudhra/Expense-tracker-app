@@ -41,7 +41,17 @@ export const removeExpense = ({id}={})=>{
         type:'REMOVE_EXPENSE',
         id:id
     }
-}
+};
+
+export const startRemoveExpense =({id}={}) =>{
+    return (dispatch) =>{
+        // Remove the epxense with the specific id from Firebase DB
+        return database.ref(`expenses/${id}`).remove().then(()=>{
+            // Make sure its also remvoed from the redux store
+            dispatch(removeExpense({id:id}));
+        });
+    };
+};
 
 // EDIT_EXPENSE
 export const editExpense = (id, updates) =>{
@@ -80,8 +90,6 @@ export const startSetExpenses = () =>{
             dispatch(setExpenses(expenses));
 
         });
-
-
 
     }
 };
