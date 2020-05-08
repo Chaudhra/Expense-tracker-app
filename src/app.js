@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import AppRouter from './routers/AppRouter.js'
+import AppRouter, {history} from './routers/AppRouter.js'
 import configureStore from './store/configureStore.js';
 import {startSetExpenses} from './actions/expenses.js';
-import {setTextFilter} from './actions/filters.js';
+import {login, logout} from './actions/auth.js';
 import getVisibleExpenses from './selectors/expenses.js';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-import './firebase/firebase';
+import {firebase} from './firebase/firebase';
 
 
 const store = configureStore();
@@ -28,16 +28,37 @@ store.subscribe(()=>{
 
 // store.dispatch(setTextFilter('water'));
 
+
 const jsx = (
     // Provides store access to all of our componenets by using the Provider component
     <Provider store={store}>  
         <AppRouter />
     </Provider>
-)
+);
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
-store.dispatch(startSetExpenses()).then(()=>{
-    ReactDOM.render(jsx, document.getElementById('app'));
-});
+let hasRendered = false;
+const renderApp = () =>{
+    if (!hasRendered){
+        ReactDOM.render(jsx, document.getElementById('app'));
+        hasRendered = true;
+    }
+}
 
+firebase.auth().onAuthStateChanged((user)=>{
+    if(user){
+        store.dispatch(login(user.uid));
+        store.dispatch(startSetExpenses()).then(()=>{
+            renderApp();
+            // Check to see if user is on login page, if so, redirect them to the dashboad page
+            if(history.location.pathname === '/'){
+                history.push('/dashboard')
+            }
+        });
+    }else{
+        store.dispatch(logout());
+        renderApp();
+        history.push('/');
+    }
+});
