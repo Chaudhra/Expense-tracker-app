@@ -69,6 +69,10 @@ const mapStateToProps=(state) =>{
     };
 };
 
+// mapDispatchToProps allows us to add properties to the prop. When we say props.setTextFilter,
+// It will call the setTextFilter() function by performing a dispatch to the action creater (which is setTextFilter())  
+//Example: When we say props.expenses in the componenet, it will call selectExpenses function 
+
 const mapDispatchToProps = (dispatch) =>{
     return {
         setTextFilter:(text) =>{

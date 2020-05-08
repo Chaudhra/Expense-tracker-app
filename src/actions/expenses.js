@@ -5,7 +5,7 @@ import database from '../firebase/firebase';
 // They are JS objects, with a type property that descibes the action + an optional payload.
 // Actions are displatched using store.dispatch. Dispatching means to send an action to the Reducer.
 
-// Add Expense action
+// ADD_EXPENSE action creater
 export const addExpense = (expense) =>{
     return {
         type: 'ADD_EXPENSE',
@@ -15,6 +15,8 @@ export const addExpense = (expense) =>{
 
 export const startAddExpense = (expenseData = {})=>{
     // Thunked/async actions get called with dispatch and getState
+    // dispatch method dispatches an action to the reducer
+    // getState gets the state of the store
     return (dispatch, getState) =>{
         const uid = getState().auth.uid;
         const {

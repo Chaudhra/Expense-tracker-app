@@ -11,7 +11,7 @@ const firebaseConfig = {
     measurementId: process.env.FIREBASE_MEASUREMENT_ID
 };
 
-
+// Creates an instance of a Firebase app instance. https://firebase.google.com/docs/reference/js/firebase#initializeapp
 firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();

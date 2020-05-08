@@ -11,6 +11,9 @@ import PublicRoute from './PublicRoute';
 
 export const history = createHistory();
 
+{/* React Router allows us to dynamically render pages in the browser */}
+{/*The url is kep up to date as we navigate, preserving the browser history*/}
+{/*https://reacttraining.com/react-router/web/guides/quick-start*/}
 const AppRouter = () =>{
     return (
 
@@ -18,7 +21,8 @@ const AppRouter = () =>{
         // Using our own history allows us to have access to it anywhere else we use javascript
         <Router history={history}>
             <div>
-               
+                {/* Using switch becase we have multiple routes, and we only want to render one at a time*/}
+                {/* The components can be thought of as different 'pages' in our app */}
                 <Switch>
                     <PublicRoute exact path="/" component={LoginPage} />
                     <PrivateRoute exact path ="/dashboard" component={ExpenseDashboardPage} />

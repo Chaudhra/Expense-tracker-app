@@ -23,7 +23,7 @@ export const ExpenseList = (props) =>{
 
 
 const mapStateToProps = (state)=>{
-    // This object represents the diff properties we want to add to the prop
+    // This object represents the different properties we want to add to the prop
     return {
         expenses:selectExpenses(state.expenses, state.filters),
         filters:state.filters
@@ -31,7 +31,8 @@ const mapStateToProps = (state)=>{
 };
 
 
-// mapStateToProps defines what we want to grab off the Store, and ExpenseList is componenet we want to create the connected version of
+// mapStateToProps defines what we want to grab off the redux store, and ExpenseList is componenet we want to create the connected version of
 // Result is a brand new componenet, ExpenseList + props from the Store.
-// Connect() returns the higher order compoenet, which then wraps the ExpenseList component
+// Connect() connects the ExpenseList component to the redux store, 
+// it returns the higher order compoenet, which then wraps the ExpenseList component
 export default connect(mapStateToProps)(ExpenseList);

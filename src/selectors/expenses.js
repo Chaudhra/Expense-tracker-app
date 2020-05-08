@@ -1,3 +1,6 @@
+// A "Selector" is a function which accepts a Redux state as an argument, and then returns
+// data that is derived from that state (aka pick out a value from the state). They help to keep the redux store lean and bloat free
+
 // Get visible expenses - returns an array of filtered objects
 import moment from 'moment';
 
