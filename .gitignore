@@ -3,4 +3,6 @@ node_modules
 public/dist/
 .env.test
 .env.development
-playground/
+src/playground/
+/src/playground
+playground
