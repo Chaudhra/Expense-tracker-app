@@ -1,4 +1,4 @@
-# FIFA Hangman
+# Expense Tracker App
 A simple expense tracker to help you keep track of your daily expenses.
 
 ## Installation and Usage
