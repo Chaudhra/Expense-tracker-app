@@ -1,6 +1,5 @@
 
 .button{
-
     background:$dark-blue;
     border:none;
     color:white;
@@ -13,7 +12,10 @@
 
 .button--link {
     background:none;
+}
 
+.button--secondary {
+    background: #888;
 }
 
 .login-button {
