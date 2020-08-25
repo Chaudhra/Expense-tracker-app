@@ -1,14 +1,14 @@
-import * as firebase from 'firebase'; //* takes all named exports and dumps them to variable called firebase
+import * as firebase from "firebase"; //* takes all named exports and dumps them to variable called firebase
 
 const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.FIREBASE_DATABASE_URL,
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.FIREBASE_API_ID,
-    measurementId: process.env.FIREBASE_MEASUREMENT_ID
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_API_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
 // Creates an instance of a Firebase app instance. https://firebase.google.com/docs/reference/js/firebase#initializeapp
@@ -18,15 +18,7 @@ const database = firebase.database();
 
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-
-
-
-
-export {firebase, googleAuthProvider, database as default}
-
-
-
-
+export { firebase, googleAuthProvider, database as default };
 
 //child_removed event
 // database.ref('expenses').on('child_removed',(snapshot)=>{
@@ -62,7 +54,6 @@ export {firebase, googleAuthProvider, database as default}
 //     console.log(expenses);
 // });
 
-
 // database.ref('expenses').on('value',(snapshot)=>{
 //     const expenses = [];
 //     snapshot.forEach((childSnapshot)=>{
@@ -76,16 +67,12 @@ export {firebase, googleAuthProvider, database as default}
 //     console.log('error:', e);
 // });
 
-
 // database.ref('expenses').push({
 //     description:'asdasd',
 //     note:'asdasd',
 //     amount:100,
 //     createdAt:1000
 // });
-
-
-
 
 // creating firebase entries with unique IDs
 // database.ref('notes').push({
@@ -103,7 +90,7 @@ export {firebase, googleAuthProvider, database as default}
 //         'someUniqueID':{
 //             title:'firt nopte',
 //             body:'this is my note'
-//         }        
+//         }
 //     }
 // }
 // const notes = [{
@@ -118,15 +105,12 @@ export {firebase, googleAuthProvider, database as default}
 
 // database.ref('notes').set(notes)
 
-
-
 // database.ref().on('value',(snapshot)=>{
 //     const val = snapshot.val();
-//     console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`) 
+//     console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`)
 // }, (e)=>{
 //     console.log(e)
 // });
-
 
 // const onValueChange = database.ref().on('value',(snapshot)=>{
 //     console.log(snapshot.val());
@@ -142,7 +126,7 @@ export {firebase, googleAuthProvider, database as default}
 // setTimeout(()=>{
 //     database.ref().off('value',onValueChange); //unsubscribe to just onValueChange
 // }, 7500);
- 
+
 // setTimeout(()=>{
 //     database.ref('age').set(30);
 // }, 10500);
@@ -152,8 +136,6 @@ export {firebase, googleAuthProvider, database as default}
 // }).catch((e)=>{
 //     console.log('error:', e)
 // });
-
-
 
 // ref is short for reference, we can use it to ref different parts of the db
 // Set is used on a ref to set its value
@@ -175,7 +157,6 @@ export {firebase, googleAuthProvider, database as default}
 //     console.log('This failed:', error)
 // });
 
-
 // database.ref('age').set(27);
 // database.ref('location/city').set('Tokyo');
 
@@ -194,8 +175,6 @@ export {firebase, googleAuthProvider, database as default}
 //     'job/company':'Amazon',
 //     'location/city':'Seattle'
 // });
-
-
 
 //Remove data
 // database.ref('isSingle')
