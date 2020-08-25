@@ -1,6 +1,8 @@
 # Expense Tracker App
 A simple expense tracker to help you keep track of your daily expenses.
 
+![alt text](https://i.imgur.com/LRAZOW9.gif)
+
 ## Installation and Usage
 ```
 yarn install 
